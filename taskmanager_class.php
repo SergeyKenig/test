@@ -6,26 +6,21 @@ class TaskManager extends Page {
         lib_auth::check_access();
         $User = lib_auth::get_user();
         
-        if(Engine::$Action == 'list'){
-            return $this->run_list($Args);
-        }
-        else if(Engine::$Action == 'one'){
-            return $this->run_one($Args);
-        }
-        else if(Engine::$Action == 'ulist'){
-            return $this->run_addlist($Args);
-        }
-        else if(Engine::$Action == 'delete'){
-            return $this->run_delete($Args);
-        }
-        else if(Engine::$Action == 'update'){
-            return $this->run_update($Args);
-        }
-        else if(Engine::$Action == 'addtask'){
-            return $this->run_add($Args);
-        }
-        else{
-            return $this->run_index($Args);
+        switch (Engine::$Action){
+            case 'list':
+                return $this->run_list($Args);  
+            case 'one':    
+                return $this->run_one($Args);  
+            case 'ulist':    
+                return $this->run_addlist($Args);        
+            case 'delete':    
+                return $this->run_delete($Args);    
+            case 'update':    
+                return $this->run_update($Args);     
+            case 'addtask':    
+                return $this->run_add($Args);     
+            default:    
+                return $this->run_index($Args);      
         }
     }
     

@@ -5,11 +5,11 @@ class Sendmail extends Page {
     public $From;
     
     public function run($Args=''){
-        if($this->MailType == 'mail'){
-            return $this->run_mail($Args);
-        }
-        else{
-            return $this->run_smtp($Args);
+        switch($this->MailType == 'mail'){
+            case 'mail':
+                return $this->run_mail($Args);
+            default:
+                return $this->run_smtp($Args);
         }
     }
     
